@@ -4,8 +4,10 @@ http_response=$(curl -X GET -H "Content-Type: application/json" -s -d '{"usernam
 status=$?
 if [ "$status" -eq 0 ]; then
   cat ascii-art.ako-basic
+  echo ""
   result=$(echo $http_response | jq .message | tr -d '"')
   echo -e $result
+  echo ""
 else
   echo "something went wrong with worker API server"
 fi
